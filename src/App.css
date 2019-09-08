@@ -1,0 +1,24 @@
+@import '../node_modules/antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css?family=Sniglet&display=swap');
+
+.text-google-font{
+  font-family: 'Sniglet',sans-serif;
+  font-size: 1rem;
+}
+
+.logo-text{
+  font-family: 'Sniglet', sans-serif;
+  font-size:2rem;
+  vertical-align: middle;
+  margin-left: 0.33rem;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+.header-box-shadow{
+  box-shadow: 3px 7px 6px -6px rgba(0,0,0,0.75);
+-webkit-box-shadow: 3px 7px 6px -6px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 7px 6px -6px rgba(0,0,0,0.75);
+
+}

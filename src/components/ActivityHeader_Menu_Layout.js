@@ -9,7 +9,7 @@ class ActivityHeader_Menu_Layout extends Component {
             <div style={{flexDirection:"column",display:"row",justifyContent:'center',alignItems:'center',verticalAlign:'middle',marginTop:20}}>
                 <Menu
                     mode="horizontal"
-                   
+                   className="border-none"
                     >
                     <Menu.Item key="home">
                         <Icon type="home" />

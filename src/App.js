@@ -4,8 +4,8 @@ import "./App.css";
 import ActivityHeader_Logo_Layout from "../src/components/ActivityHeader_Logo_Layout";
 import ActivityHeader_Menu_Layout from "../src/components/ActivityHeader_Menu_Layout";
 import ActivityHeader_Profile_Layout from "./components/ActivityHeader_Profile_Layout";
-
-import { ConfigProvider, Badge, Layout, Col, Row } from 'antd';
+import Activity_Content from "./components/Content/Activity_Content";
+import { ConfigProvider, Affix, Layout, Col, Row } from 'antd';
 import trTurkey from 'antd/es/locale/tr_TR';
 import Sider from 'antd/lib/layout/Sider';
 
@@ -20,8 +20,8 @@ class App extends Component {
 
         <React.Fragment>
           <Layout>
-            <Row type="flex" style={{ backgroundColor: "white" }}>
-              <Col span={18} style={{ backgroundColor: "white" }}>
+            <Row type="flex" style={{ backgroundColor: "#F5F5F5" }}>
+              <Col span={18} style={{ backgroundColor: "#F5F5F5" }}>
                 <Header
                   style={{ backgroundColor: "white" }}>
 
@@ -37,14 +37,17 @@ class App extends Component {
                   </Row>
 
                 </Header>
-                <Content style={{ backgroundColor: "red" }} lang="tr_TR">
-
-
+                <Content style={{ backgroundColor: "#F5F5F5" }} lang="tr_TR">
+                     <Activity_Content/>
                 </Content>
-                <Footer style={{ backgroundColor: "white" }} ></Footer>
+                <Footer style={{ backgroundColor: "#F5F5F5" }} >
+                  <div>11111111</div>
+                </Footer>
               </Col>
-              <Col span={6} style={{ backgroundColor: "white" }}>
-                <ActivityHeader_Profile_Layout />
+              <Col span={6} style={{ backgroundColor: "white", borderLeft: 3, borderColor: "red" }}>
+                <Affix offsetTop={0}>
+                  <ActivityHeader_Profile_Layout />
+                </Affix>
               </Col>
             </Row>
 

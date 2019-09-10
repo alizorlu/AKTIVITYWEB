@@ -11,7 +11,7 @@ class ActivityHeader_Menu_Layout extends Component {
                     mode="horizontal"
                    className="border-none"
                     >
-                    <Menu.Item key="home">
+                    <Menu.Item key="home" color="#F5F5F5">
                         <Icon type="home" />
                         <span className="text-google-font">
                         Ana Sayfa

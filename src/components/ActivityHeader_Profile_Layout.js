@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Col, Row, Card, Button, Icon, Avatar } from 'antd'
 import '../App.css';
+
+import  ProfileLayout  from "./Activity_Profile_Layout";
+
 const { Meta } = Card;
 const ButtonGroup = Button.Group;
 
@@ -40,6 +43,9 @@ class ActivityHeader_Profile_Layout extends Component {
                     </Button>
                     </span>
                     
+                </Col>
+                <Col span={24}>
+                        <ProfileLayout/>
                 </Col>
             </Row>
         );

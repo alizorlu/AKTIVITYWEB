@@ -59,7 +59,7 @@ justify-content: center;
 flex-direction: column;
 }
 .border-none{
-  border: none;
+  border: 0;
 }
 .ml-1{
   margin-left: 0.1rem;

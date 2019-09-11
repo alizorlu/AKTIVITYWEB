@@ -6,7 +6,7 @@ import '../App.css';
 class ActivityHeader_Menu_Layout extends Component {
     render() {
         return (
-            <div style={{flexDirection:"column",display:"row",justifyContent:'center',alignItems:'center',verticalAlign:'middle',marginTop:20}}>
+            <div style={{flexDirection:"column",display:"row",justifyContent:'center',alignItems:'center',verticalAlign:'middle',marginTop:10}}>
                 <Menu
                     mode="horizontal"
                    className="border-none"

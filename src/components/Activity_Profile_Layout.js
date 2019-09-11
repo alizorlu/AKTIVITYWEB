@@ -64,6 +64,12 @@ class Activity_Profile_Layout extends Component {
                     </List.Item>
                     <List.Item>
                         <Text code style={{ fontSize: 20 }}>
+                            <Icon style={{ fontSize: 20 }} type="save" />
+                        </Text>
+                        <Text className="text-google-font">Aktivi koleksiyonlarım</Text>
+                    </List.Item>
+                    <List.Item>
+                        <Text code style={{ fontSize: 20 }}>
                             <Icon style={{ fontSize: 20 }} type="interaction" />
                         </Text>
                         <Text className="text-google-font" >Etkileşimler</Text>

@@ -38,7 +38,7 @@ class ActivityHeader_Logo_Layout extends Component {
                 ) : (
 
                         <div>
-                            <img style={{ width: 40, height: 40 }} src="https://image.flaticon.com/icons/svg/414/414246.svg" />
+                            <img style={{ width: 35, height: 35 }} src="https://image.flaticon.com/icons/svg/414/414246.svg" />
                             <span className="logo-text" >AKTIVITY
                     <Badge count={1.01} title="Aktivity version">
                                     {/* <span className="top-example" /> */}

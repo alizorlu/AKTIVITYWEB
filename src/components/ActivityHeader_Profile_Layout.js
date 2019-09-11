@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Col, Row, Card, Button, Icon, Avatar } from 'antd'
 import '../App.css';
 
-import  ProfileLayout  from "./Activity_Profile_Layout";
+import ProfileLayout from "./Activity_Profile_Layout";
 
 const { Meta } = Card;
 const ButtonGroup = Button.Group;
@@ -36,16 +36,17 @@ class ActivityHeader_Profile_Layout extends Component {
                 </Col>
                 <Col span={16} className="profile-info-column">
                     <span>
+                        <Button className="ml-2" type="default" shape={"circle"} icon="plus" />
                         <Button className="ml-2" type="default" shape={"circle"} icon="message" />
                         <Button className="ml-2" type="default" shape={"circle"} icon="bell" />
-                        <Button className="ml-most" type="primary" size={"default"}>
-                        Düzenle
-                    </Button>
+                        <Button style={{float:"right"}} type="danger" shape="circle">
+                            <Icon type="poweroff" />
+                        </Button>
                     </span>
-                    
+
                 </Col>
                 <Col span={24}>
-                        <ProfileLayout/>
+                    <ProfileLayout />
                 </Col>
             </Row>
         );

@@ -5,8 +5,10 @@ import ActivityHeader_Logo_Layout from "../src/components/ActivityHeader_Logo_La
 import ActivityHeader_Menu_Layout from "../src/components/ActivityHeader_Menu_Layout";
 import ActivityHeader_Profile_Layout from "./components/ActivityHeader_Profile_Layout";
 import Activity_Left_Menu from "./components/Content/Activity_Left_Menu";
+import Activity_Content from './components/Content/Activity_Content';
 import { ConfigProvider, Affix, Layout, Col, Row } from 'antd';
 import trTurkey from 'antd/es/locale/tr_TR';
+
 
 const { Header, Footer, Content } = Layout;
 
@@ -36,12 +38,12 @@ class App extends Component {
                 </Header>
                 <Content style={{ backgroundColor: "#F5F5F5" }} lang="tr_TR">
                   <Row>
-                    <Col span={8}>
+                    <Col span={7}>
                       <Activity_Left_Menu />
 
                     </Col>
-                    <Col span={16} style={{ zIndex: 1, color: "white", backgroundColor: "red", paddingLeft: 10, paddingRight: 10 }}>
-                      1
+                    <Col span={17} style={{ zIndex: 1, color: "white", paddingLeft: 10, paddingRight: 10 }}>
+                      <Activity_Content/>
                     </Col>
                   </Row>
                 </Content>

@@ -13,44 +13,41 @@ class Activity_Left_Menu extends Component {
                 style={{ backgroundColor: "white", marginTop: 10, paddingLeft: 30, paddingTop: 10, paddingRight: 20, borderBottomRightRadius: 10, borderTopRightRadius: 10 }}>
                 <Row type="flex">
                     <Col span={24}>
-                        <Divider className="text-google-font" style={{ paddingBottom: 0 }} orientation="left">Sosyalleşebilirsin</Divider>
+                        <Divider className="text-google-font"
+                            style={{ paddingBottom: 0 }}
+                            orientation="left">Sosyalleşebilirsin</Divider>
                         <List
                             size="small"
-                            style={{ borderRadius: 0, padding: 0 }}>
-                           <List.Item style={{borderBottom:0,padding:0}}>
-                                <Icon />
-                                <Text>1</Text>
+                            style={{ padding: 0 }}>
+                            <List.Item>
+                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#ff4893" type="plus-circle" />
+                                <Button className="text-google-font" type="link">
+                                    Yeni bir aktivi oluştur
+                                 </Button>
+
                             </List.Item>
-                            <List.Item style={{borderBottom:0,padding:0}}>
-                                <Text code style={{ fontSize: 20 }}>
-                                    <Icon style={{ fontSize: 20 }} type="interaction" />
-                                </Text>
-                                <Text className="text-google-font" >Etkileşimler</Text>
+                            <List.Item>
+                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#FF7875" type="thunderbolt" />
+
+                                <Button className="text-google-font" type="link">
+                                    Sana göre aktivitiler
+                                 </Button>
                             </List.Item>
-                            <List.Item style={{borderBottom:0}}>
-                                <Text code style={{ fontSize: 20, backgroundColor: "white", color: "rgba(0, 0, 0, 0.65)" }}>
-                                    <Icon style={{ fontSize: 20 }} type="star" />
-                                </Text>
-                                <Text className="text-google-font">Değerlendirmeler</Text>
+                            <List.Item>
+                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#341677" type="environment" />
+
+                                <Button className="text-google-font" type="link">
+                                    İnsanlar neler yapıyor
+                                 </Button>
                             </List.Item>
-                            <List.Item style={{borderBottom:0}}>
-                                <Text code style={{ fontSize: 20 }}>
-                                    <Icon style={{ fontSize: 20 }} type="tool" />
-                                </Text>
-                                <Text className="text-google-font">Ayarlar</Text>
+                            <List.Item>
+                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#4baea0" type="safety-certificate" />
+                                <Button className="text-google-font" type="link">
+                                    Aktiviti kriterlerini oluşturalım
+                                 </Button>
+
                             </List.Item>
-                            <List.Item style={{borderBottom:0}}>
-                                <Text code style={{ fontSize: 20 }}>
-                                    <Icon style={{ fontSize: 20 }} type="history" />
-                                </Text>
-                                <Text className="text-google-font">Verileriniz ve hesap geçmişi</Text>
-                            </List.Item>
-                            <List.Item style={{borderBottom:0}}>
-                                <Text code style={{ fontSize: 20 }}>
-                                    <Icon style={{ fontSize: 20 }} type="code" />
-                                </Text>
-                                <Text className="text-google-font">Güncellemeler ve hakkında</Text>
-                            </List.Item>
+
                         </List>
 
                     </Col>

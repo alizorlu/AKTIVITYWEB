@@ -73,6 +73,19 @@ flex-direction: column;
 .ml-most{
   margin-left: 1rem;
 }
+
+.mr-1{
+  margin-right: 0.1rem;
+}
+.mr-2{
+  margin-right: 0.2rem;
+}
+.mr-3{
+  margin-right: 0.3rem;
+}
+.mr-most{
+  margin-right: 1rem;
+}
 .pb-1{
   padding-bottom: 0.1rem;
 }
@@ -87,4 +100,25 @@ flex-direction: column;
 }
 .float-left{
   float: left;
+}
+.input-border{
+  border-radius: 102;
+}
+.fw-lighter{
+  font-weight: lighter;
+}
+.fw-bolder{
+  font-weight: bolder;
+}
+.fw-bold{
+  font-weight: bold;
+}
+.fw-300{
+  font-weight: 300;
+}
+.fw-500{
+  font-weight: 500
+}
+.fw-700{
+  font-weight: 700;
 }

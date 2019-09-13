@@ -13,9 +13,21 @@ const { Text } = Typography;
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
 const treeData = [
     {
-        title: 'Doğa Sporları',
+        title: 'aaa',
         value: '0-0',
         key: '0-0',
+        children:[
+            {
+                title:"etiket1",
+                value:"Etiket-2",
+                key:"key2"
+            },
+            {
+                title:"etiket2",
+                value:"Etiket-3",
+                key:"key3"
+            }
+        ]
     },
     {
         title: 'Kapalı Sporlar',
@@ -128,6 +140,7 @@ class Activity_Content_Top_Search extends Component {
                     optionLabelProp="text">
                     <Input
                         onTouchStart={20}
+                        placeholder="Bungee jumping ankara,Safranbolu gezi"
                         prefix={
                             <Icon type="search" />
                         }

@@ -42,7 +42,7 @@ class App extends Component {
                       <Activity_Left_Menu />
 
                     </Col>
-                    <Col span={17} style={{ zIndex: 1, color: "white", paddingLeft: 10, paddingRight: 10 }}>
+                    <Col span={17} style={{ zIndex: 1,  paddingLeft: 10, paddingRight: 10 }}>
                       <Activity_Content/>
                     </Col>
                   </Row>

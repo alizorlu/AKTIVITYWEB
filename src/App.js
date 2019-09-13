@@ -24,6 +24,7 @@ class App extends Component {
             <Row type="flex" style={{ backgroundColor: "#F5F5F5" }}>
               <Col span={18} style={{ backgroundColor: "#F5F5F5" }}>
                 <Header
+               
                   style={{ backgroundColor: "white" }}>
 
                   <Row type="flex" justify="center" align="middle">
@@ -51,7 +52,7 @@ class App extends Component {
                   <div>11111111</div>
                 </Footer>
               </Col>
-              <Col span={6} style={{ backgroundColor: "white", borderLeft: 3, borderColor: "red" }}>
+              <Col className="box" span={6} style={{ backgroundColor: "white", borderLeft: 3 }}>
                 <Affix offsetTop={0}>
                   <ActivityHeader_Profile_Layout />
                 </Affix>

@@ -10,6 +10,7 @@ class Activity_Left_Menu extends Component {
     render() {
         return (
             <div
+            className="box"
                 style={{ backgroundColor: "white", marginTop: 10, paddingLeft: 30, paddingTop: 10, paddingRight: 20, borderBottomRightRadius: 10, borderTopRightRadius: 10 }}>
                 <Row type="flex">
                     <Col span={24}>

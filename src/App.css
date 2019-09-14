@@ -159,6 +159,9 @@ flex-direction: column;
 .color-danger{
   color: #fa5477;
 }
+.color-verified{
+  color: #1890ff;
+}
 .font-size-10{
   font-size: 1rem;
 }

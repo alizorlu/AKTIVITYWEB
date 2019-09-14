@@ -3,7 +3,7 @@ import {
     Row, Menu, Avatar, Badge, Dropdown
     , Tabs, Card, Button, Icon, Col
     , Typography, Divider, Popover
-    , Drawer
+    , Drawer, Progress, Statistic, Tooltip, Comment
 } from 'antd'
 
 import "../../App.css";
@@ -12,6 +12,8 @@ import Activity_Content_Top_Search from "./Activity_Content_Top_Search";
 
 const { Meta } = Card;
 const { Paragraph, Text } = Typography;
+
+const { TabPane } = Tabs;
 const menu = (
     <Menu onClick={handleMenuClick}>
         <Menu.Item key="0">Ölmeden önce yapılacaklar</Menu.Item>
@@ -23,13 +25,34 @@ function handleMenuClick(e) {
     console.log('click', e);
 }
 
+function callback(key) {
+    console.log(key);
+}
 
 
 
 class Activity_Content extends Component {
     state = {
         activiDrawerVisible: false,
-        acitiviProfileDrawerVisible:false,
+        acitiviProfileDrawerVisible: false,
+        likes: 0,
+        dislikes: 0,
+        action: null,
+    };
+    like = () => {
+        this.setState({
+            likes: 1,
+            dislikes: 0,
+            action: 'liked',
+        });
+    };
+
+    dislike = () => {
+        this.setState({
+            likes: 0,
+            dislikes: 1,
+            action: 'disliked',
+        });
     };
     activiDrawerShow = () => {
         this.setState({
@@ -53,6 +76,33 @@ class Activity_Content extends Component {
     };
 
     render() {
+
+        const { likes, dislikes, action } = this.state;
+
+        const actions = [
+            <span key="comment-basic-like">
+                <Tooltip title="Like">
+                    <Icon
+                        type="like"
+                        theme={action === 'liked' ? 'filled' : 'outlined'}
+                        onClick={this.like}
+                    />
+                </Tooltip>
+                <span style={{ paddingLeft: 8, cursor: 'auto' }}>{likes}</span>
+            </span>,
+            <span key=' key="comment-basic-dislike"'>
+                <Tooltip title="Dislike">
+                    <Icon
+                        type="dislike"
+                        theme={action === 'disliked' ? 'filled' : 'outlined'}
+                        onClick={this.dislike}
+                    />
+                </Tooltip>
+                <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
+            </span>,
+            <span key="comment-basic-reply-to">Reply to</span>,
+        ];
+
         return (
             <div style={{ marginBottom: 100 }}>
                 <Row type={"flex"}>
@@ -182,11 +232,11 @@ class Activity_Content extends Component {
                                                 Konya'da Bungee Jumping'in Tadına Varacaksınız !
                                         </Text>
                                             <Button type="link"
-                                            onClick={this.acitiviProfileDrawerShow}
-                                            style={{float:"right"}} className="mt-2">
-                                            <Avatar
-                                                className="mr-2"
-                                                src="https://avatars0.githubusercontent.com/u/24724027" />
+                                                onClick={this.acitiviProfileDrawerShow}
+                                                style={{ float: "right" }} className="mt-2">
+                                                <Avatar
+                                                    className="mr-2"
+                                                    src="https://avatars0.githubusercontent.com/u/24724027" />
                                                 <span
                                                     style={{ fontWeight: "bold" }}
                                                     className="text-google-font pb-most">
@@ -203,15 +253,240 @@ class Activity_Content extends Component {
                                     visible={this.state.activiDrawerVisible}
                                     onClose={this.activiDrawerClose}>
                                     <p>SSSS</p>
-                                                                <Drawer
-                                                                width={650}
-                                                                placement={"right"}
-                                                                closable={false}
-                                                                visible={this.state.acitiviProfileDrawerVisible}
-                                                                onClose={this.acitiviProfileDrawerClose}
-                                                                >
-                                                                        <p>PROFİL</p>
-                                                                </Drawer>
+                                    <Drawer
+                                        title=
+                                        {
+                                            <div>
+
+                                                <Avatar
+                                                    className="mr-2"
+                                                    src="https://avatars0.githubusercontent.com/u/24724027" />
+                                                <span
+                                                    style={{ fontWeight: "bold" }}
+                                                    className="text-google-font pb-most color-verified">
+                                                    <Icon type="check-circle" style={{ paddingRight: 2 }} theme="filled" />
+                                                    azorlua
+                                                </span>
+                                                <Divider type="vertical" />
+                                                <Text className="text-google-font fw-500 mt-2">
+                                                    Ali Zorlu
+                                                </Text>
+                                                <Divider type="vertical" />
+                                                <Text className="text-google-font fw-500 mt-2">
+                                                    20 aktivitide bulundu
+                                                </Text>
+                                                <Text className="text-google-font fw-500 pb-most" style={{ float: "right" }}>
+                                                    {/* <small className="color-danger">Onaysız profil,</small> */}
+                                                    <small className="color-primary">Genel değerlendirme   </small>
+                                                    <Progress
+                                                        type="circle"
+
+                                                        width={45}
+                                                        strokeColor={{
+                                                            '0%': '#108ee9',
+                                                            '100%': '#87d068',
+                                                        }}
+                                                        percent={66.98}
+                                                    />
+                                                </Text>
+                                            </div>
+                                        }
+                                        width={650}
+                                        placement={"right"}
+                                        closable={false}
+                                        visible={this.state.acitiviProfileDrawerVisible}
+                                        onClose={this.acitiviProfileDrawerClose}>
+
+                                        <div style={{ margin: 0, padding: 0 }}>
+                                            <Row type="flex">
+                                                <Col span={8}>
+                                                    <Statistic title={
+                                                        <Text>
+                                                            Etkileşim
+                                                        </Text>
+
+                                                    } value={59} prefix={<Icon type="interaction" />} />
+                                                </Col>
+                                                <Col span={8}>
+                                                    <Statistic title="Aktiviti" value={93} prefix={<Icon type="thunderbolt" />} suffix=" aktiviti düzenledi" />
+                                                </Col>
+                                                <Col span={8}>
+                                                    <Statistic title="Görüntülenme" value={93} prefix={<Icon type="eye" />} suffix="görüntülenme" />
+                                                </Col>
+                                                <Divider dashed />
+                                                <Col span={24}>
+                                                    <Tabs defaultActiveKey="1" onChange={callback}>
+                                                        <TabPane tab={
+                                                            <div>
+                                                                <Icon type="star" />
+                                                                <Text>Genel Değerlendirme özeti</Text>
+                                                            </div>
+                                                        } key="1">
+                                                            
+                                                        </TabPane>
+                                                        <TabPane tab={
+                                                            <div>
+                                                                <Icon type="message" />
+                                                                <Text>Hakkındaki yorumlar</Text>
+                                                            </div>
+                                                        } key="2">
+                                                        <div>
+                                                                <Comment
+                                                                    actions={actions}
+                                                                    author={<a>@hansolo</a>}
+                                                                    avatar={
+                                                                        <Avatar
+                                                                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                                                            alt="Han Solo"
+                                                                        />
+                                                                    }
+                                                                    content={
+                                                                        <p>
+                                                                            We supply a series of design principles, practical patterns and high quality design
+                                                                            resources (Sketch and Axure), to help people create their product prototypes beautifully
+                                                                            and efficiently.
+                                                                         </p>
+                                                                    }
+                                                                    datetime={
+                                                                        <Tooltip title={"2 saat önce"}>
+                                                                            <span>2 sa</span>
+                                                                        </Tooltip>
+                                                                    }
+                                                                />
+                                                                 <Comment
+                                                                    actions={actions}
+                                                                    author={<a>@hansolo</a>}
+                                                                    avatar={
+                                                                        <Avatar
+                                                                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                                                            alt="Han Solo"
+                                                                        />
+                                                                    }
+                                                                    content={
+                                                                        <p>
+                                                                            We supply a series of design principles, practical patterns and high quality design
+                                                                            resources (Sketch and Axure), to help people create their product prototypes beautifully
+                                                                            and efficiently.
+                                                                         </p>
+                                                                    }
+                                                                    datetime={
+                                                                        <Tooltip title={"2 saat önce"}>
+                                                                            <span>2 sa</span>
+                                                                        </Tooltip>
+                                                                    }
+                                                                />
+                                                                 <Comment
+                                                                    actions={actions}
+                                                                    author={<a>@hansolo</a>}
+                                                                    avatar={
+                                                                        <Avatar
+                                                                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                                                            alt="Han Solo"
+                                                                        />
+                                                                    }
+                                                                    content={
+                                                                        <p>
+                                                                            We supply a series of design principles, practical patterns and high quality design
+                                                                            resources (Sketch and Axure), to help people create their product prototypes beautifully
+                                                                            and efficiently.
+                                                                         </p>
+                                                                    }
+                                                                    datetime={
+                                                                        <Tooltip title={"2 saat önce"}>
+                                                                            <span>2 sa</span>
+                                                                        </Tooltip>
+                                                                    }
+                                                                />
+                                                                 <Comment
+                                                                    actions={actions}
+                                                                    author={<a>@hansolo</a>}
+                                                                    avatar={
+                                                                        <Avatar
+                                                                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                                                            alt="Han Solo"
+                                                                        />
+                                                                    }
+                                                                    content={
+                                                                        <p>
+                                                                            We supply a series of design principles, practical patterns and high quality design
+                                                                            resources (Sketch and Axure), to help people create their product prototypes beautifully
+                                                                            and efficiently.
+                                                                         </p>
+                                                                    }
+                                                                    datetime={
+                                                                        <Tooltip title={"2 saat önce"}>
+                                                                            <span>2 sa</span>
+                                                                        </Tooltip>
+                                                                    }
+                                                                />
+                                                                 <Comment
+                                                                    actions={actions}
+                                                                    author={<a>@hansolo</a>}
+                                                                    avatar={
+                                                                        <Avatar
+                                                                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                                                            alt="Han Solo"
+                                                                        />
+                                                                    }
+                                                                    content={
+                                                                        <p>
+                                                                            We supply a series of design principles, practical patterns and high quality design
+                                                                            resources (Sketch and Axure), to help people create their product prototypes beautifully
+                                                                            and efficiently.
+                                                                         </p>
+                                                                    }
+                                                                    datetime={
+                                                                        <Tooltip title={"2 saat önce"}>
+                                                                            <span>2 sa</span>
+                                                                        </Tooltip>
+                                                                    }
+                                                                />
+                                                                 <Comment
+                                                                    actions={actions}
+                                                                    author={<a>@hansolo</a>}
+                                                                    avatar={
+                                                                        <Avatar
+                                                                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                                                            alt="Han Solo"
+                                                                        />
+                                                                    }
+                                                                    content={
+                                                                        <p>
+                                                                            We supply a series of design principles, practical patterns and high quality design
+                                                                            resources (Sketch and Axure), to help people create their product prototypes beautifully
+                                                                            and efficiently.
+                                                                         </p>
+                                                                    }
+                                                                    datetime={
+                                                                        <Tooltip title={"2 saat önce"}>
+                                                                            <span>2 sa</span>
+                                                                        </Tooltip>
+                                                                    }
+                                                                />
+                                                            </div>
+                                                         </TabPane>
+                                                    </Tabs>
+                                                </Col>
+                                            </Row>
+                                        </div>
+
+                                        <div
+                                            style={{
+                                                position: 'absolute',
+                                                bottom: 0,
+                                                width: '100%',
+                                                borderTop: '1px solid #e8e8e8',
+                                                padding: '10px 16px',
+                                                textAlign: 'right',
+                                                left: 0,
+                                                background: '#fff',
+                                                borderRadius: '0 0 4px 4px',
+                                            }}>
+
+                                            BURASI PROFİL FOOTER(Paylaş-WP'de-Arkadaşına gönder gibi...)
+
+                                            </div>
+                                    </Drawer>
                                 </Drawer>
 
                             </Row>

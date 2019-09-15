@@ -27,12 +27,20 @@ class Activity_Left_Menu extends Component {
                                  </Button>
 
                             </List.Item>
+                            
                             <List.Item>
                                 <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#FF7875" type="thunderbolt" />
 
                                 <Button className="text-google-font" type="link">
                                     Sana göre aktivitiler
                                  </Button>
+                            </List.Item>
+                            <List.Item>
+                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#ff4893" type="like" />
+                                <Button className="text-google-font" type="link">
+                                    Beğeni Listeleriniz
+                                 </Button>
+
                             </List.Item>
                             <List.Item>
                                 <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#341677" type="environment" />
@@ -49,6 +57,42 @@ class Activity_Left_Menu extends Component {
 
                             </List.Item>
 
+                        </List>
+                        <Divider className="text-google-font"
+                            style={{ paddingBottom: 0 }}
+                            orientation="left">Kurumsal</Divider>
+                        <List
+                            size="small"
+                            style={{ padding: 0 }}>
+                           
+                            <List.Item>
+                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#FF7875" type="question-circle" />
+
+                                <Button className="text-google-font" type="link">
+                                    Hakkında
+                                 </Button>
+                            </List.Item>
+                            <List.Item>
+                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#FF7875" type="question-circle" />
+
+                                <Button className="text-google-font" type="link">
+                                    Kurumsal Üyelik
+                                 </Button>
+                            </List.Item>
+                            <List.Item>
+                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#FF7875" type="question-circle" />
+
+                                <Button className="text-google-font" type="link">
+                                    Reklam
+                                 </Button>
+                            </List.Item>
+                            <List.Item>
+                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#FF7875" type="question-circle" />
+
+                                <Button className="text-google-font" type="link">
+                                    İstatistik
+                                 </Button>
+                            </List.Item>
                         </List>
 
                     </Col>

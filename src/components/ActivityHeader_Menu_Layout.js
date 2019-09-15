@@ -2,37 +2,41 @@
 import React, { Component } from 'react'
 import { Menu, Badge, Icon } from 'antd'
 import '../App.css';
-
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 class ActivityHeader_Menu_Layout extends Component {
     render() {
         return (
-            <div  style={{flexDirection:"column",display:"row",justifyContent:'center',alignItems:'center',verticalAlign:'middle',marginTop:10}}>
+            <div style={{ flexDirection: "column", display: "row", justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', marginTop: 10 }}>
                 <Menu
                     mode="horizontal"
-                   className="border-none"
-                    >
+                    className="border-none"
+                >
                     <Menu.Item key="home" color="#F5F5F5">
-                        <Icon type="home" />
-                        <span className="text-google-font">
-                        Ana Sayfa
+                        <Link to="/">
+                            <Icon type="home" />
+                            <span className="text-google-font">
+                                Ana Sayfa
                         </span>
+                        </Link>
                     </Menu.Item>
                     <Menu.Item key="fire">
-                        <Icon type="fire" />
+                       <Link to="/users">
+                       <Icon type="fire" />
                         <span className="text-google-font">
-                        Akış
+                            Akış
                         </span>
+                        </Link>
                     </Menu.Item>
                     <Menu.Item key="user-add">
                         <Icon type="search" />
                         <span className="text-google-font">
-                        Etkinliğe Katıl
+                            Etkinliğe Katıl
                         </span>
                     </Menu.Item>
                     <Menu.Item key="trends">
                         <Icon type="heart" />
                         <span className="text-google-font">
-                        Trendler
+                            Trendler
                         </span>
                     </Menu.Item>
                     <Menu.Item key="contacts">

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Row, List, Button, Icon, Col, Typography, Divider } from 'antd'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 import "../../App.css";
 const { Title, Text } = Typography;
@@ -66,31 +68,26 @@ class Activity_Left_Menu extends Component {
                             style={{ padding: 0 }}>
                            
                             <List.Item>
-                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#FF7875" type="question-circle" />
-
                                 <Button className="text-google-font" type="link">
                                     Hakkında
                                  </Button>
                             </List.Item>
                             <List.Item>
-                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#FF7875" type="question-circle" />
-
+                                
                                 <Button className="text-google-font" type="link">
                                     Kurumsal Üyelik
                                  </Button>
                             </List.Item>
                             <List.Item>
-                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#FF7875" type="question-circle" />
-
+                                
                                 <Button className="text-google-font" type="link">
                                     Reklam
                                  </Button>
                             </List.Item>
                             <List.Item>
-                                <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#FF7875" type="question-circle" />
-
+                               
                                 <Button className="text-google-font" type="link">
-                                    İstatistik
+                                    Aktiviti büyüyor
                                  </Button>
                             </List.Item>
                         </List>

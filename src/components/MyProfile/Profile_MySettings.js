@@ -1,12 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 class Profile_MySettings extends Component {
     render() {
         return (
             <div>
-                Profile_MySettings
+                <React.Fragment>
+                    <Fragment>
+                        SSSS
+                    </Fragment>
+                </React.Fragment>
             </div>
-        )
+        );
     }
 }
 export default Profile_MySettings;

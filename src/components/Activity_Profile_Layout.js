@@ -21,28 +21,6 @@ class Activity_Profile_Layout extends Component {
     render() {
         return (
             <div>
-                {/* <Tabs
-                    size={"large"}
-                    className="text-google-font" defaultActiveKey="1" onChange={callback}>
-                    <TabPane tab="Aktiviteler" key="1">
-                        <MyActivities />
-                    </TabPane>
-                    <TabPane tab="Etkileşimler" key="2">
-                        <MyInteraction />
-                    </TabPane>
-                    <TabPane tab="Değerlendirme" key="6">
-                        <MyAssessment />
-                    </TabPane>
-                    <TabPane tab="Bildirimler" key="3">
-                        <MyNotification />
-                    </TabPane>
-                    <TabPane tab="Ayarlar" key="4">
-                        <MySettings />
-                    </TabPane>
-                    <TabPane tab="Hesap Geçmişiniz" key="5">
-                        <AccountHistory />
-                    </TabPane>
-                </Tabs> */}
                 <List
                     size="small"
                     style={{ borderRadius: 0 }}

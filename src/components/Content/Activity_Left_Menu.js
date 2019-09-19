@@ -38,11 +38,13 @@ class Activity_Left_Menu extends Component {
                                  </Button>
                             </List.Item>
                             <List.Item>
+                                <Link to="/favorite">
+                               
                                 <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#ff4893" type="like" />
                                 <Button className="text-google-font" type="link">
                                     Beğeni Listeleriniz
                                  </Button>
-
+                                 </Link>
                             </List.Item>
                             <List.Item>
                                 <Icon style={{ fontSize: 20 }} theme="twoTone" twoToneColor="#341677" type="environment" />

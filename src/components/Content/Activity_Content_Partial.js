@@ -72,9 +72,10 @@ function callback(key) {
             acitiviProfileDrawerVisible: false,
         });
     };
+    
     render() {
         const { likes, dislikes, action } = this.state;
-
+       
         const actions = [
             <span key="comment-basic-like">
                 <Tooltip title="Like">

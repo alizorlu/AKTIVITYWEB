@@ -20,10 +20,10 @@ class ActivityHeader_Menu_Layout extends Component {
                         </Link>
                     </Menu.Item>
                     <Menu.Item key="fire">
-                       <Link to="/users">
-                       <Icon type="fire" />
+                       <Link to="/stream">
+                       <Icon type="notification" />
                         <span className="text-google-font">
-                            Akış
+                            Akışlarınız
                         </span>
                         </Link>
                     </Menu.Item>

@@ -16,6 +16,8 @@ const { Header, Footer, Content } = Layout;
 class App extends Component {
 
   render() {
+
+
     return (
       <ConfigProvider locale={trTurkey}>
 

@@ -14,6 +14,8 @@ import trTurkey from 'antd/es/locale/tr_TR';
 import ActivityHeader_Profile_Layout from './components/ActivityHeader_Profile_Layout';
 import { type } from 'os';
 import Activity_Content from './components/Content/Activity_Content';
+import Activity_Login from './components/Activity_Login';
+import information_layout from './components/Information/information_layout';
 
 const { Header, Footer, Content } = Layout;
 
@@ -22,7 +24,8 @@ const { Header, Footer, Content } = Layout;
 const pages = {
   Favorite: <Activity_Favorite />,
   Home: <Activity_Content />,
-  Stream: <Activity_Stream />
+  Stream: <Activity_Stream />,
+  Login:<Activity_Login/>
 }
 
 
@@ -35,6 +38,8 @@ const routing = (
       {layout_general(pages.Home)}
       </Route> */}
       <Route path="/stream" component={Activity_Stream} />
+      <Route path="/login" component={Activity_Login} />
+      <Route path="/information/:id" component={information_layout} />
       <Route path="/favorite" component={Activity_Favorite}/>
     </div>
   </Router>

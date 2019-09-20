@@ -1,12 +1,46 @@
 import React, { Component } from 'react'
-import { Row, Layout, Col, Tooltip, Form, Icon, Input, Button, Checkbox, Affix, Divider } from 'antd'
+import { Row, Layout, Col, Tooltip, Form, Icon, Input, Button, Checkbox, Affix, Divider, Result } from 'antd'
 import "../App.css";
+import { AuthUser } from './services/AuthUser';
+import { message } from 'antd';
 
 const { Header, Footer, Content } = Layout;
 class Activity_Login extends Component {
 
-   
+   constructor(props){
+       super(props);
+       this.state={
+           username:'',
+           password:''
+       }
+       this.login=this.login.bind(this);
+       this.onChange=this.onChange.bind(this);
+       
+   }
+   errorMessage(){
+       message.error("Lütfen kullanıcı adınızı ve şifrenizi kimlik tanımamız için giriniz.")
+   }
+   onChange(e){
+       this.setState({[e.target.name]:e.target.value});
+    // console.log(e.target.value);
+   }
+   login(){
+    //    console.log('user:'+this.state.username+'\npass:'+this.state.password)
+   if(this.state.username.length>3&&this.state.password.length>3)
+   {
+    AuthUser("auth/login",this.state)
+    .then((result)=>{
 
+        let responseJson=result;
+        console.log(result);
+
+    });
+   }
+   else{
+       this.errorMessage();
+   }
+    
+}
     render() {
         return (
             <div>
@@ -30,6 +64,8 @@ class Activity_Login extends Component {
                                 <Form layout="vertical">
                                     <Form.Item label="Kullanıcı adı/Email/Telefon">
                                         <Input
+                                            onChange={this.onChange}
+                                           name="username"
                                             placeholder="Kullanıcı adı/email ya da telefon no"
                                             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                             suffix={
@@ -40,7 +76,9 @@ class Activity_Login extends Component {
                                         />
                                     </Form.Item>
                                     <Form.Item label="Şifrenizi giriniz">
-                                        <Input.Password
+                                        <Input.Password 
+                                            name="password"
+                                            onChange={this.onChange}
                                             placeholder="Şifrenizi giriniz"
                                             prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                             suffix={
@@ -56,6 +94,7 @@ class Activity_Login extends Component {
                                             Fast login'i deneyin!
                                         </Button>
                                         <Button block
+                                            onClick={this.login}
                                             type="primary">
                                             Giriş yapınız
                                         </Button>

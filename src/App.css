@@ -226,3 +226,21 @@ text-align: center;
   margin-top: 40px;
   margin-left: 100px;
 }
+.w-100{
+  width: 150px;
+}
+.h-100{
+  height: 150px;
+}
+.information-box{
+  display: inline-block;
+  transition: box-shadow .5s;
+  border-radius: 10px;
+  border: 0.2px solid rgba(204, 204, 204, .5);
+  box-shadow: 0 0 5px rgba(33,33,33,.1); 
+  
+}
+.information-box:hover {
+  box-shadow: 0 0 5px rgba(33,33,33,.1); 
+  border: 1px solid rgba(204, 204, 204, .75);
+}

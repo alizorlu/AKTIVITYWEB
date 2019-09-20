@@ -91,6 +91,27 @@ const pageContents = {
         title:"Hizmet Şartları",
         content:<h2>Hizmet Şartları</h2>,
         direction:<div>Hizmet Şartları</div>
+    },
+    index:{
+        title:"Bilgi Edinme Merkezi",
+        content:<div className="text-google-font mt-most"> 
+            <div className="ml-most information-box w-100 h-100 mt-most" style={{borderRadius:10,cursor:"pointer",alignContent:"center",textAlign:"center",paddingTop:"50px"}}>
+            <Icon className="text-google-font" type="info-circle" />
+            <h3>Hakkında</h3>
+            </div>
+            <div className="ml-most information-box w-100 h-100 mt-most" style={{borderRadius:10,cursor:"pointer",alignContent:"center",textAlign:"center",paddingTop:"50px"}}>
+            <Icon type="safety-certificate" />
+            <h3>Gizlilik Politikası</h3>
+            </div>
+            <div className="ml-most information-box w-100 h-100 mt-most" style={{borderRadius:10,cursor:"pointer",alignContent:"center",textAlign:"center",paddingTop:"50px"}}>
+            <Icon type="security-scan" />
+            <h3>Çerezler</h3>
+            </div>
+            <div className="ml-most information-box w-100 h-100 mt-most" style={{borderRadius:10,cursor:"pointer",alignContent:"center",textAlign:"center",paddingTop:"50px"}}>
+            <Icon type="bank" />
+            <h3>Reklam ve İşletme</h3>
+            </div>
+        </div>
     }
 }
 class information_layout extends Component {
@@ -133,6 +154,11 @@ class information_layout extends Component {
                                 {
                                     params.id=='contact'&&(pageContents.contact.title)
                                 }
+                                {
+                                    params.id=="index"&&(
+                                        pageContents.index.title
+                                    )
+                                }
 
                             
                            
@@ -149,7 +175,11 @@ class information_layout extends Component {
                         </Affix>
                     </Col>
                     <Col span={20} style={{ paddingLeft: 200, paddingRight: 200 }}>
-
+                         {
+                                    params.id=="index"&&(
+                                        pageContents.index.content
+                                    )
+                                }
                         {
                             params.id == 'aboutus' && (pageContents.aboutus.content)
                         }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Row, Layout, Col, Tooltip, Form, Icon, Input, Button, Checkbox, Affix, Divider, Result } from 'antd'
+import { Row, Layout, Col, Tooltip, Form, Icon, Input, Button, Checkbox, Affix, Divider, Result, Spin } from 'antd'
 import "../App.css";
+import { Redirect } from 'react-router-dom';
 import { AuthUser } from './services/AuthUser';
 import { message } from 'antd';
+import { GetAuthenticatedUser } from './services/GetAuthenticatedUser';
 
 const { Header, Footer, Content } = Layout;
 class Activity_Login extends Component {
@@ -11,15 +13,22 @@ class Activity_Login extends Component {
        super(props);
        this.state={
            username:'',
-           password:''
+           password:'',
+           redirect:false,
+           sendlogin:false,
        }
        this.login=this.login.bind(this);
        this.onChange=this.onChange.bind(this);
-       
    }
+   
    errorMessage(){
        message.error("Lütfen kullanıcı adınızı ve şifrenizi kimlik tanımamız için giriniz.")
    }
+   errorSetMessage(param){
+       message.error(<h4>Bir şeyler yanlış gitti.Galiba yanlış bir kimlik bilgisi girdin...<strong>Hata mesajın:<u>{param}</u></strong></h4>);
+     
+    }
+   
    onChange(e){
        this.setState({[e.target.name]:e.target.value});
     // console.log(e.target.value);
@@ -28,12 +37,35 @@ class Activity_Login extends Component {
     //    console.log('user:'+this.state.username+'\npass:'+this.state.password)
    if(this.state.username.length>3&&this.state.password.length>3)
    {
+    this.setState({sendlogin:true});  
     AuthUser("auth/login",this.state)
     .then((result)=>{
 
+      
         let responseJson=result;
-        console.log(result);
-
+        // console.log("YANIT:"+result);
+        // GetAuthenticatedUser(result);
+        if (result!=""&&result!="Not identitified user") {
+            sessionStorage.setItem('userdata',result);
+            GetAuthenticatedUser(sessionStorage.getItem('userdata'))
+            .then((data)=>{
+                if(data.value)
+                {
+                    sessionStorage.setItem('userprofile',JSON.stringify(data.value));
+                }
+                // console.log(data.value);
+                
+            })
+            .catch((error)=>{
+                console.log(error);
+                
+            });
+            this.setState({redirect:true});
+        }
+        else{
+            this.setState({sendlogin:false});
+            this.errorSetMessage(result);
+        }
     });
    }
    else{
@@ -42,6 +74,9 @@ class Activity_Login extends Component {
     
 }
     render() {
+        if (this.state.redirect) {
+            return <Redirect to='/'></Redirect>
+        }
         return (
             <div>
                 <Row type="flex">
@@ -54,7 +89,8 @@ class Activity_Login extends Component {
                             <span className="logo-text" >AKTIVITY</span>
                             <Divider style={{ width: 100 }} />
 
-                            <div className="page-login-screen">
+                           <Spin spinning={this.state.sendlogin}>
+                           <div className="page-login-screen">
                                 <Icon type="safety-certificate" />
                                 <span className="ml-2 text-google-font">
 
@@ -105,6 +141,8 @@ class Activity_Login extends Component {
 
                             </div>
 
+                          
+                           </Spin>
                           
                         </Col>
                         <Col span={24} style={{bottom:0,position:"absolute"}}>

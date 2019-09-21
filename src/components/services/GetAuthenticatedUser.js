@@ -1,4 +1,3 @@
-
 const METHODS = {
     POST: "POST",
     GET: "GET",
@@ -7,28 +6,27 @@ const METHODS = {
     DELETE: "DELETE"
 }
 
-export function AuthUser(type, userdata) {
+export function GetAuthenticatedUser(token) {
 
     let headers = new Headers();
-    
-
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Credentials', 'true');
-
-
-    let BaseUrl = "https://localhost:44339/api/auth/login/" + userdata.username + "/" + userdata.password;
+    headers.append('Authorization','Bearer '+token);
+    let BaseUrl = "https://localhost:44339/api/activityuser/MyProfile"
     return new Promise((resolve, reject) => {
 
         fetch(BaseUrl, {
             mode: "cors",
-            headers: headers,
-            method: METHODS.POST,
-            body: JSON.stringify(userdata)
+            headers:headers,
+            method: METHODS.GET
         })
             .then((resp) => {
+               
               if(resp.ok){
-                 resp.json().then((token)=>{
-                   return resolve(token.token);
+                 resp.json().then((data)=>{
+                    //  console.log(data.value);
+                     
+                   return resolve(data);
                  })
               }
               else if(resp.status==401){
@@ -39,6 +37,7 @@ export function AuthUser(type, userdata) {
               }
             })
             .catch((error) => {
+                console.log(error)
                 reject(error);
             })
     });

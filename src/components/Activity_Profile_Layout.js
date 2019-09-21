@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Tabs, List, Icon, Typography, Button } from 'antd';
+import { Tabs, List, Icon, Typography, Button, Skeleton } from 'antd';
+import { Redirect } from 'react-router-dom';
 
 import MyActivities from "./MyProfile/Profile_MyActivity";
 import AccountHistory from "./MyProfile/Profile_AccountHistory";
@@ -9,76 +10,137 @@ import MySettings from "./MyProfile/Profile_MySettings";
 import MyNotification from "./MyProfile/Profile_MyNotification";
 
 import '../App.css';
+import { GetAuthenticatedUser } from './services/GetAuthenticatedUser';
 const { Text } = Typography;
 const { TabPane } = Tabs;
-function callback(key) {
-    console.log(key);
-}
 
 
 
 class Activity_Profile_Layout extends Component {
-    render() {
-        return (
-            <div>
-                <List
-                    size="small"
-                    style={{ borderRadius: 0 }}
-                    header={<div className="text-google-font" style={{ marginLeft: 10 }}>
-                        <Icon type="user" style={{ fontSize: 20, paddingRight: 10 }} />
-                        <Text strong className="text-google-font"> Ali Zorlu</Text>
-                        <Text style={{ float: "right" }}>
-                            <Button style={{ float: "right" }} className="ml-most" size={"small"} icon="edit">
-                                Profilini düzenle
-                         </Button>
 
-                        </Text>
-                    </div>} bordered>
-                    <List.Item>
-                        <Text code style={{ fontSize: 20 }}>
-                            <Icon style={{ fontSize: 20 }} type="thunderbolt" />
-                        </Text>
-                        <Text className="text-google-font">Aktivitilerim</Text>
-                    </List.Item>
-                    <List.Item>
-                        <Text code style={{ fontSize: 20 }}>
-                            <Icon style={{ fontSize: 20 }} type="save" />
-                        </Text>
-                        <Text className="text-google-font">Aktivi koleksiyonlarım</Text>
-                    </List.Item>
-                    <List.Item>
-                        <Text code style={{ fontSize: 20 }}>
-                            <Icon style={{ fontSize: 20 }} type="interaction" />
-                        </Text>
-                        <Text className="text-google-font" >Etkileşimler</Text>
-                    </List.Item>
-                    <List.Item>
-                        <Text code style={{ fontSize: 20, backgroundColor: "white", color: "rgba(0, 0, 0, 0.65)" }}>
-                            <Icon style={{ fontSize: 20 }} type="star" />
-                        </Text>
-                        <Text className="text-google-font">Değerlendirmeler</Text>
-                    </List.Item>
-                    <List.Item>
-                        <Text code style={{ fontSize: 20 }}>
-                            <Icon style={{ fontSize: 20 }} type="tool" />
-                        </Text>
-                        <Text className="text-google-font">Ayarlar</Text>
-                    </List.Item>
-                    <List.Item>
-                        <Text code style={{ fontSize: 20 }}>
-                            <Icon style={{ fontSize: 20 }} type="history" />
-                        </Text>
-                        <Text className="text-google-font">Verileriniz ve hesap geçmişi</Text>
-                    </List.Item>
-                    <List.Item>
-                        <Text code style={{ fontSize: 20 }}>
-                            <Icon style={{ fontSize: 20 }} type="code" />
-                        </Text>
-                        <Text className="text-google-font">Güncellemeler ve hakkında</Text>
-                    </List.Item>
-                </List>
-            </div>
-        );
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false,
+            loginuserdata: null
+        }
+    }
+
+    componentWillMount() {
+        if (sessionStorage.getItem("userdata")) {
+            // console.log(sessionStorage.getItem('userdata'));
+            GetAuthenticatedUser(sessionStorage.getItem('userdata'))
+                .then(data => {
+
+                    var result = data;
+                    this.setState({ loginuserdata: data.value });
+                    // console.log(result.value);
+
+
+                })
+                .catch((error) => {
+
+                    console.log(error);
+
+                });
+        }
+        else {
+            this.setState({ redirect: !this.state.redirect });
+        }
+    }
+
+
+
+    render() {
+        if (this.state.redirect == false) {
+            return (
+                <div>
+                    <List
+                        size="small"
+                        style={{ borderRadius: 0 }}
+                        header={<div className="text-google-font" style={{ marginLeft: 10 }}>
+
+                            {
+                                this.state.loginuserdata == null && (
+                                    <Skeleton loading active avatar={false}
+                                     title={{width:100}}
+
+                                      paragraph={false} >
+                                       
+                                    </Skeleton>
+
+                                )
+                            }
+                            {
+                                this.state.loginuserdata != null && (
+                                    <div>
+                                        <Icon type="user" style={{ fontSize: 20, paddingRight: 10 }} />
+                                        <Text strong className="text-google-font">
+                                            {this.state.loginuserdata.nameSurname}
+                                        </Text>
+                                    </div>
+
+                                )
+                            }
+
+                            <Text style={{ float: "right" }}>
+                                <Button style={{ float: "right",marginTop:-20}} className="ml-most" size={"small"} icon="edit">
+                                    Düzenle
+                             </Button>
+
+                            </Text>
+                        </div>} bordered>
+                        <List.Item>
+                            <Text code style={{ fontSize: 20 }}>
+                                <Icon style={{ fontSize: 20 }} type="thunderbolt" />
+                            </Text>
+                            <Text className="text-google-font">Aktivitilerim</Text>
+                        </List.Item>
+                        <List.Item>
+                            <Text code style={{ fontSize: 20 }}>
+                                <Icon style={{ fontSize: 20 }} type="save" />
+                            </Text>
+                            <Text className="text-google-font">Aktivi koleksiyonlarım</Text>
+                        </List.Item>
+                        <List.Item>
+                            <Text code style={{ fontSize: 20 }}>
+                                <Icon style={{ fontSize: 20 }} type="interaction" />
+                            </Text>
+                            <Text className="text-google-font" >Etkileşimler</Text>
+                        </List.Item>
+                        <List.Item>
+                            <Text code style={{ fontSize: 20, backgroundColor: "white", color: "rgba(0, 0, 0, 0.65)" }}>
+                                <Icon style={{ fontSize: 20 }} type="star" />
+                            </Text>
+                            <Text className="text-google-font">Değerlendirmeler</Text>
+                        </List.Item>
+                        <List.Item>
+                            <Text code style={{ fontSize: 20 }}>
+                                <Icon style={{ fontSize: 20 }} type="tool" />
+                            </Text>
+                            <Text className="text-google-font">Ayarlar</Text>
+                        </List.Item>
+                        <List.Item>
+                            <Text code style={{ fontSize: 20 }}>
+                                <Icon style={{ fontSize: 20 }} type="history" />
+                            </Text>
+                            <Text className="text-google-font">Verileriniz ve hesap geçmişi</Text>
+                        </List.Item>
+                        <List.Item>
+                            <Text code style={{ fontSize: 20 }}>
+                                <Icon style={{ fontSize: 20 }} type="code" />
+                            </Text>
+                            <Text className="text-google-font">Güncellemeler ve hakkında</Text>
+                        </List.Item>
+                    </List>
+                </div>
+            );
+        }
+        else if (this.state.redirect == true) {
+            return <Redirect to="/login" />
+        }
+
     }
 }
 export default Activity_Profile_Layout

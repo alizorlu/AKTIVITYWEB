@@ -31,9 +31,7 @@ class ActivityHeader_Profile_Layout extends Component {
                 .then(data => {
 
                     var result = data;
-                    console.clear();
-                    console.log("Gelen data kontrol");
-                    console.log(result.value);
+                    
                     
                     if(data.value==undefined)
                     {

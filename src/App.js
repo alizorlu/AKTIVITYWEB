@@ -9,6 +9,7 @@ import Activity_Content from './components/Content/Activity_Content';
 import { ConfigProvider, Affix, Layout, Col, Row, message } from 'antd';
 import trTurkey from 'antd/es/locale/tr_TR';
 import { Redirect } from 'react-router-dom';
+import { Last100Activity } from './components/services/Last100Activity';
 
 const { Header, Footer, Content } = Layout;
 
@@ -26,6 +27,7 @@ class App extends Component {
     if(sessionStorage.getItem("userdata"))
     {
       // console.log(sessionStorage.getItem('userdata'));
+     
       
     }
     else{
